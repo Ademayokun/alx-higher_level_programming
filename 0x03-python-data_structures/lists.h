@@ -1,35 +1,26 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include "lists.h"
+#ifndef LISTS_H
+#define LISTS_H
+
+#include <stddef.h>
 
 /**
- * main - check the code for Holberton School students.
+ * struct listint_s - singly linked list
+ * @n: integer
+ * @next: points to the next node
  *
- * Return: Always 0.
+ * Description: singly linked list node structure
+ * for project
  */
-int main(void)
+typedef struct listint_s
 {
-    listint_t *head;
+	int n;
+	struct listint_s *next;
+} listint_t;
 
-    head = NULL;
-    add_nodeint_end(&head, 1);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 98);
-    add_nodeint_end(&head, 50);
-    add_nodeint_end(&head, 972);
-    add_nodeint_end(&head, 17);
-    add_nodeint_end(&head, 1);
-    print_listint(head);
+size_t print_listint(const listint_t *h);
+listint_t *add_nodeint_end(listint_t **head, const int n);
+void free_listint(listint_t *head);
 
-    if (is_palindrome(&head) == 1)
-        printf("Linked list is a palindrome\n");
-    else
-        printf("Linked list is not a palindrome\n");
+int is_palindrome(listint_t **head);
 
-    free_listint(head);
-
-    return (0);
-}
+#endif /* LISTS_H */

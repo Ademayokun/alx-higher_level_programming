@@ -1,37 +1,29 @@
 #include "lists.h"
 /**
- * PalindromeRecur - Check if linked list is palindrome.
- * @left: Head of list
- * @right: Last element take it in recursion.
+ * comparator - compare start and end position
+ * @head: the linked list
+ * @last: the end of the list
+ * Return: 1 true, 0 false
  */
-int PalindromeRecur(listint_t **left, listint_t *right)
+int comparator(listint_t **head, listint_t *last)
 {
-	int pal;
-
-	if (right == NULL)
+	if (last == NULL)
 		return (1);
-
-	pal = PalindromeRecur(left, right->next);
-	if (pal == 0)
-		return (0);
-
-	pal = (right->n == (*left)->n);
-
-	*left = (*left)->next;
-	return (pal);
+	if (comparator(head, last->next) && (*head)->n == last->n)
+	{
+		*head = (*head)->next;
+		return (1);
+	}
+	return (0);
 }
-
 /**
- * is_palindrome - Check if linked list is palindrome.
- * @head: give list
- * @right: Last element take it in recursion.
+ * is_palindrome - checks if a singly linked list is a palindrome
+ * @head: the linked list
+ * Return: 1 true, 0 false
  */
 int is_palindrome(listint_t **head)
 {
-	int res;
-
-	if (!head)
-		return (0);
-	res = PalindromeRecur(head, *head);
-	return (res);
+	if (!head || !(*head))
+		return (1);
+	return (comparator(head, *head));
 }
