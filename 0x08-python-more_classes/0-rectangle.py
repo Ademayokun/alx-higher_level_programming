@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-
-'''LEARNING MORE ABOUT CLASSES AND OBJECTS'''
-
+"""
+Defines an empty class Rectangle
+"""
 
 
 class Rectangle:
-    '''Class Rectangle'''
+    """Empty representation of a rectangle"""
     pass
